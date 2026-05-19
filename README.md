@@ -1,14 +1,17 @@
-A simple Flask REST API for managing Users, Posts, and Comments using Flask-SQLAlchemy and SQLite.
+Flask REST API – Users, Posts & Comments
 
-Features
+A simple REST API built with Flask, Flask-SQLAlchemy, and SQLite for managing Users, Posts, and Comments. The project includes full CRUD operations and database seeding using Faker.
+
+🚀 Features
 CRUD operations for:
 Users
 Posts
 Comments
 SQLite database
 Flask-SQLAlchemy ORM
-Faker seeding script
-Project Structure
+Flask-Migrate for database migrations
+Faker-based database seeding
+📁 Project Structure
 .
 ├── app.py
 ├── models.py
@@ -18,67 +21,61 @@ Project Structure
 ├── README.md
 └── instance/
     └── app.db
-Installation
-1. Clone the repository
+⚙️ Installation
+1. Clone the Repository
 git clone <your_repo_url>
 cd <project_folder>
-2. Install dependencies
-
+2. Install Dependencies
 Using pip:
-
 pip install flask flask_sqlalchemy flask_migrate faker
-
 OR using Pipenv:
-
 pipenv install
 pipenv shell
-Database Setup
-Initialize migration
+🗄️ Database Setup
+Initialize migrations
 flask db init
 Create migration
 flask db migrate -m "initial migration"
 Apply migration
 flask db upgrade
-Seed the Database
+🌱 Seed the Database
 
-Run the seed file:
+Run the seed script:
 
 python3 seed.py
-
 This will create:
-
 3 users
 9 posts
 9 comments
-Run the Server
+▶️ Run the Server
 python3 app.py
 
-Server runs at:
+Server will run at:
 
 http://127.0.0.1:5555
-API Endpoints
-Users
+📡 API Endpoints
+👤 Users
 Method	Endpoint	Description
 GET	/users	Fetch all users
 POST	/users	Create a user
 GET	/users/<id>	Fetch one user
-PUT	/users/<id>	Update user
-DELETE	/users/<id>	Delete user
-Posts
+PUT	/users/<id>	Update a user
+DELETE	/users/<id>	Delete a user
+📝 Posts
 Method	Endpoint	Description
 GET	/posts	Fetch all posts
 POST	/posts	Create a post
 GET	/posts/<id>	Fetch one post
-PUT	/posts/<id>	Update post
-DELETE	/posts/<id>	Delete post
-Comments
+PUT	/posts/<id>	Update a post
+DELETE	/posts/<id>	Delete a post
+💬 Comments
 Method	Endpoint	Description
 GET	/comments	Fetch all comments
 POST	/comments	Create a comment
 GET	/comments/<id>	Fetch one comment
-PUT	/comments/<id>	Update comment
-DELETE	/comments/<id>	Delete comment
-Example JSON Requests
+PUT	/comments/<id>	Update a comment
+DELETE	/comments/<id>	Delete a comment
+📦 Example JSON Requests
 Create User
 {
   "username": "john"
@@ -94,13 +91,13 @@ Create Comment
   "message": "Great post!",
   "post_id": 1
 }
-Technologies Used
+🛠️ Technologies Used
 Python
 Flask
 Flask-SQLAlchemy
 Flask-Migrate
 SQLite
 Faker
-Author
+👨‍💻 Author
 
 Joseph Mokaya
