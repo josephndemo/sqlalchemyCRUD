@@ -9,6 +9,10 @@ flask-sqlalchemy = "*"
 flask-cors = "*"
 flask-migrate = "*"
 faker = "*"
+<<<<<<< HEAD
+=======
+flask-jwt-extended = "*"
+>>>>>>> upstream/master
 
 [dev-packages]
 

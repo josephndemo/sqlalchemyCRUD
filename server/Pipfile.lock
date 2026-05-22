@@ -1,7 +1,11 @@
 {
     "_meta": {
         "hash": {
+<<<<<<< HEAD
             "sha256": "4bd85b42c0a49f96fffa3af2df918a396de3890a4df28649c5e325dc7bd0f4e9"
+=======
+            "sha256": "d50ab5946f60fd67e3764150621dcbdde12058d1439e4d032ef1e83c1345b321"
+>>>>>>> upstream/master
         },
         "pipfile-spec": 6,
         "requires": {
@@ -34,11 +38,19 @@
         },
         "click": {
             "hashes": [
+<<<<<<< HEAD
                 "sha256:398329ad4837b2ff7cbe1dd166a4c0f8900c3ca3a218de04466f38f6497f18a2",
                 "sha256:a2bf429bb3033c89fa4936ffb35d5cb471e3719e1f3c8a7c3fff0b8314305613"
             ],
             "markers": "python_version >= '3.10'",
             "version": "==8.3.3"
+=======
+                "sha256:40c50b7c6c6adac2823d411041ec84f3f103f1b280d5e9ce0d7f998995832f81",
+                "sha256:638f1338fe1235c8f4e008e4a8a254fb5c5fbdcbb40ece3c9142ebb78e792973"
+            ],
+            "markers": "python_version >= '3.10'",
+            "version": "==8.4.0"
+>>>>>>> upstream/master
         },
         "faker": {
             "hashes": [
@@ -67,6 +79,18 @@
             "markers": "python_version >= '3.9' and python_version < '4.0'",
             "version": "==6.0.2"
         },
+<<<<<<< HEAD
+=======
+        "flask-jwt-extended": {
+            "hashes": [
+                "sha256:78fd0f460317facf3a0084a6457ffaf2f1dda9eefbd576f94cea35b0eadd5531",
+                "sha256:daad1981117f4972d63c363d013f290de307aad781a935921b603b714817393c"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.10' and python_version < '4'",
+            "version": "==4.7.4"
+        },
+>>>>>>> upstream/master
         "flask-migrate": {
             "hashes": [
                 "sha256:1a336b06eb2c3ace005f5f2ded8641d534c18798d64061f6ff11f79e1434126d",
@@ -269,6 +293,17 @@
             "markers": "python_version >= '3.9'",
             "version": "==3.0.3"
         },
+<<<<<<< HEAD
+=======
+        "pyjwt": {
+            "hashes": [
+                "sha256:28ca37c070cad8ba8cd9790cd940535d40274d22f80ab87f3ac6a713e6e8454c",
+                "sha256:c74a7a2adf861c04d002db713dd85f84beb242228e671280bf709d765b03672b"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==2.12.1"
+        },
+>>>>>>> upstream/master
         "sqlalchemy": {
             "hashes": [
                 "sha256:01146546d84185f12721a1d2ce0c6673451a7894d1460b592d378ca4871a0c72",

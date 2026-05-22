@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 from flask import Flask, request, jsonify
 from app import app
 from models import Post, User, Comment
@@ -29,12 +30,57 @@ def add_post():
 
     user = User.query.get(data["user_id"])
     if not user:
+=======
+from flask import  request, jsonify, Blueprint
+from app import  db
+from models import Post, User
+from flask_jwt_extended import jwt_required, get_jwt_identity
+
+
+post_bp = Blueprint('post_bp', __name__)
+
+
+def post_to_dict(post):
+    return {
+        "id": post.id,
+        "title": post.title,
+        "content": post.content,
+        "user": {
+            "id": post.user.id,
+            "email": post.user.email,
+            "username": post.user.username
+        } if post.user else None
+    }
+
+
+# READ
+@post_bp.route("/posts")
+@jwt_required()
+def fetch_posts():
+    # fetching data in sqlalchemy
+    posts = Post.query.all()
+    results = [post_to_dict(post) for post in posts]
+    return jsonify(results), 200
+
+# ADD
+@post_bp.route("/posts", methods=["POST"])
+@jwt_required()
+def add_post():
+    data = request.get_json()
+
+    current_user_id = get_jwt_identity()
+    if not current_user_id:
+>>>>>>> upstream/master
         return jsonify({"error": "Unauthorized as user do not exist"}), 404
     
     new_post = Post(
         title=data["title"],
         content=data["content"],
+<<<<<<< HEAD
         user_id=data["user_id"]
+=======
+        user_id=int(current_user_id)
+>>>>>>> upstream/master
     )
 
     db.session.add(new_post)
@@ -44,12 +90,18 @@ def add_post():
 
 
 # read one post
+<<<<<<< HEAD
 @app.route("/posts/<int:post_id>")
+=======
+@post_bp.route("/posts/<int:post_id>")
+@jwt_required()
+>>>>>>> upstream/master
 def fetch_post(post_id):
     post = Post.query.get(post_id)
     if not post:
         return jsonify({"error": "Post does not exists"}), 404
     
+<<<<<<< HEAD
     my_post = {
         "id": post.id,
         "title": post.title,
@@ -68,6 +120,26 @@ def update_post(id):
         return jsonify({"error": "Post does not exists"}), 404
     
 
+=======
+    return jsonify(post_to_dict(post)), 200
+
+
+# -0--UPDATE
+@post_bp.route("/posts/<int:id>", methods=["PUT"])
+@jwt_required()
+def update_post(id):
+    current_user_id = int(get_jwt_identity())
+    # fetch the post
+    post = Post.query.get(id)
+
+    # if post doesn't exists give an error
+    if not post:
+        return jsonify({"error": "Post does not exists"}), 404
+
+    if post.user_id != current_user_id:
+        return jsonify({"error": "Not authorized to update this post"}), 401
+    
+>>>>>>> upstream/master
     data = request.get_json()
 
     post.title = data.get("title", post.title)
@@ -79,20 +151,37 @@ def update_post(id):
 
 
 # DELETE
+<<<<<<< HEAD
 @app.route("/posts/<int:id>", methods=["DELETE"])
 def delete_post(id):
     # fetch the post
     post = Post.query.get(id)
+=======
+@post_bp.route("/posts/<int:id>", methods=["DELETE"])
+@jwt_required()
+def delete_post(id):
+    current_user_id = int(get_jwt_identity())
+    # fetch the post
+    post = Post.query.get(id)
+
+>>>>>>> upstream/master
     # if post doesn't exists give an error
     if not post:
         return jsonify({"error": "The post you want to delete does not exists"}), 404
 
+<<<<<<< HEAD
+=======
+    if post.user_id != current_user_id:
+        return jsonify({"error": "Not authorized to delete this post"}), 401
+
+>>>>>>> upstream/master
     db.session.delete(post)
     db.session.commit()
 
     return jsonify({"success": "Post deleted successfully"}), 200
 
 
+<<<<<<< HEAD
 
 # ==================== USER =============================
 
@@ -248,3 +337,5 @@ def delete_comment(id):
     db.session.commit()
 
     return jsonify({"success": "Comment deleted successfully"}), 200
+=======
+>>>>>>> upstream/master
